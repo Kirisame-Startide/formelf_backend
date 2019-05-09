@@ -1,7 +1,7 @@
 from app import app
 from flask import request
 import sys 
-sys.path.append('C:\\Users\\Alex Chen\\Documents\\工程\\getinfo\\app')
+sys.path.append('C:\\Users\\Alex Chen\\Documents\\工程\\formelf\\formelf_backend\\app')
 import pageGen
 import json2replace
 import pymysql
@@ -28,7 +28,7 @@ def get():
         i=i+1
         dict_.append(str(dic))
     jsonData=dict(zip(key_,dict_))
-    print(str(jsonData))
+    #print(str(jsonData))
     jsonObj=json.dumps(jsonData)
     return(str(jsonObj))
 
@@ -53,7 +53,7 @@ def updateTable():
     try:
         page=pageGen.pageGen(request.args.get('id'))
     except: 
-        page='出现问题，请检查:\n1.是否提交了get信息\n2.提交的id是否存在'
+        page='出现问题，请检查:<br/>1.是否提交了get信息<br/>2.提交的id是否存在'
     return(page)
     #get请求一个id，id为json以及docx的编号
 #用户请求一个id,返回一个对应json生成的网页。pageGen是生成网页的程序。请求id部分尚不完善。form会提交给doUpdateTable
